@@ -1,9 +1,6 @@
 package com.learn.task1;
 
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Task1 {
@@ -28,4 +25,23 @@ public class Task1 {
                 .max(Comparator.comparingLong(Map.Entry::getValue))
                 .map(Map.Entry::getKey);
     }
+
+    public Optional<Auto> mostExpensiveAuto() {
+        return autos.stream().max(Comparator.comparingDouble(autos -> autos.price));
+    }
+
+
+    public Map<String,List<Auto>> groupByBrand() {
+        return autos.stream()
+                .collect(Collectors.groupingBy(Auto::getBrand));
+
+    }
+
+    public Map<String,Long>  countByBrand() {
+        return autos.stream()
+                .collect(Collectors.groupingBy(Auto::getBrand,Collectors.counting()));
+
+    }
+
+
 }

@@ -10,6 +10,7 @@ import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import static org.junit.Assert.assertEquals;
@@ -49,4 +50,27 @@ public class Task1Test {
         assertTrue(result.isPresent());
         assertEquals(20000, result.get(), 0.01);
     }
+
+    @Test
+    public void testMostExpensiveAuto() {
+        Optional<Auto> result = task1.mostExpensiveAuto();
+        assertTrue(result.isPresent());
+        assertEquals(40000,result.get().getPrice(), 0.01);
+
+    }
+
+    @Test
+    public void testGroupByBrand() {
+        Map<String, List<Auto>> result = task1.groupByBrand();
+        assertEquals(4, result.size());
+        assertEquals(2,result.get("Toyota").size());
+    }
+
+    @Test
+    public void testCountByBrand() {
+        Map<String,Long> result = task1.countByBrand();
+        assertEquals(2, (long) result.get("Toyota"));
+        assertEquals(1,(long)result.get("Ford"));
+    }
+
 }
