@@ -1,9 +1,6 @@
 package com.learn.task1;
 
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Task1 {
@@ -14,18 +11,37 @@ public class Task1 {
     }
 
     public List<Auto> filterByPrice(double minPrice) {
-        return autos.stream().filter(auto -> auto.getPrice() >= minPrice).collect(Collectors.toList());
+        return autos.stream().filter(auto -> auto.getPrice() >= minPrice).toList();
     }
 
     public List<Auto> sortByPrice() {
-        return autos.stream().sorted(Comparator.comparingDouble(Auto::getPrice)).collect(Collectors.toList());
+        return autos.stream().sorted(Comparator.comparingDouble(Auto::getPrice)).toList();
     }
 
-    public Optional<Double> mostCommonPrice() {
+    public Optional<Double> findMostCommonPrice() {
         return autos.stream()
                 .collect(Collectors.groupingBy(Auto::getPrice, Collectors.counting()))
                 .entrySet().stream()
                 .max(Comparator.comparingLong(Map.Entry::getValue))
                 .map(Map.Entry::getKey);
     }
+
+    public Optional<Auto> findMostExpensiveAuto() {
+        return autos.stream().max(Comparator.comparingDouble(auto -> auto.price));
+    }
+
+
+    public Map<String,List<Auto>> groupByBrand() {
+        return autos.stream()
+                .collect(Collectors.groupingBy(Auto::getBrand));
+
+    }
+
+    public Map<String,Long>  countByBrand() {
+        return autos.stream()
+                .collect(Collectors.groupingBy(Auto::getBrand,Collectors.counting()));
+
+    }
+
+
 }
