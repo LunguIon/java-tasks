@@ -45,17 +45,17 @@ public class Task1Test {
     }
 
     @Test
-    public void testMostCommonPrice() {
-        Optional<Double> result = task1.mostCommonPrice();
+    public void testFindMostCommonPrice() {
+        Optional<Double> result = task1.findMostCommonPrice();
         assertTrue(result.isPresent());
         assertEquals(20000, result.get(), 0.01);
     }
 
     @Test
-    public void testMostExpensiveAuto() {
-        Optional<Auto> result = task1.mostExpensiveAuto();
+    public void testFindMostExpensiveAuto() {
+        Optional<Auto> result = task1.findMostExpensiveAuto();
         assertTrue(result.isPresent());
-        assertEquals(40000,result.get().getPrice(), 0.01);
+        assertEquals(40000, result.get().getPrice(), 0.01);
 
     }
 
@@ -63,14 +63,14 @@ public class Task1Test {
     public void testGroupByBrand() {
         Map<String, List<Auto>> result = task1.groupByBrand();
         assertEquals(4, result.size());
-        assertEquals(2,result.get("Toyota").size());
+        assertEquals(2, result.get("Toyota").size());
     }
 
     @Test
     public void testCountByBrand() {
         Map<String,Long> result = task1.countByBrand();
         assertEquals(2, (long) result.get("Toyota"));
-        assertEquals(1,(long)result.get("Ford"));
+        assertEquals(1, (long)result.get("Ford"));
     }
 
 }

@@ -11,14 +11,14 @@ public class Task1 {
     }
 
     public List<Auto> filterByPrice(double minPrice) {
-        return autos.stream().filter(auto -> auto.getPrice() >= minPrice).collect(Collectors.toList());
+        return autos.stream().filter(auto -> auto.getPrice() >= minPrice).toList();
     }
 
     public List<Auto> sortByPrice() {
-        return autos.stream().sorted(Comparator.comparingDouble(Auto::getPrice)).collect(Collectors.toList());
+        return autos.stream().sorted(Comparator.comparingDouble(Auto::getPrice)).toList();
     }
 
-    public Optional<Double> mostCommonPrice() {
+    public Optional<Double> findMostCommonPrice() {
         return autos.stream()
                 .collect(Collectors.groupingBy(Auto::getPrice, Collectors.counting()))
                 .entrySet().stream()
@@ -26,8 +26,8 @@ public class Task1 {
                 .map(Map.Entry::getKey);
     }
 
-    public Optional<Auto> mostExpensiveAuto() {
-        return autos.stream().max(Comparator.comparingDouble(autos -> autos.price));
+    public Optional<Auto> findMostExpensiveAuto() {
+        return autos.stream().max(Comparator.comparingDouble(auto -> auto.price));
     }
 
 
