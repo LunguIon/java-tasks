@@ -15,9 +15,14 @@ public class Ex2 {
     public String setUp() {
          try(Stream<String> lines = Files.lines(Path.of(filePath))) {
              List<String> makesList = lines.toList();
+             if(!makesList.isEmpty()){
             this.make = makesList.get(new Random().nextInt(0, makesList.size()));
-            factory = new VehicleFactory(make);
+            this.factory = new VehicleFactory(make);
             return "the file was read successfully";
+             }else{
+                 return "the file is empty";
+             }
+
         }
         catch(IOException e) {
             return "some problem occurred";

@@ -1,12 +1,14 @@
 package com.learn.task2.ex_2;
 
 public class Car extends Vehicle{
+    String localMake;
+
     public Car(String make) {
-        super(make);
+        this.localMake = make;
     }
 
     @Override
     public String go() {
-        return "The " + make + " Car is running";
+        return "The " +  localMake + " Car is running";
     }
 }

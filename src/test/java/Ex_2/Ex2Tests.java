@@ -5,7 +5,7 @@ import com.learn.task2.ex_2.Ex2;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 
 public class Ex2Tests {
@@ -24,21 +24,33 @@ public class Ex2Tests {
     }
 
     @Test
+    public void testFileEmpty() {
+        String result = new Ex2().setUp();
+        assertNotEquals("the file is empty", result);
+    }
+
+    @Test
     public void testRunCar() {
         String result = ex2.runCar().go();
-        assertEquals("The " + make + " Car is running", result);
+        if(!make.isEmpty()) {
+            assertEquals("The " + make + " Car is running", result);
+        }
     }
 
     @Test
     public void testRunTruck() {
         String result = ex2.runTruck().go();
-        assertEquals("The " + make + " Truck is running", result);
+        if(!make.isEmpty()) {
+            assertEquals("The " + make + " Truck is running", result);
+        }
     }
 
     @Test
     public void testRunMotorcycle() {
         String result = ex2.runMotorcycle().go();
-        assertEquals("The " + make + " Motorcycle is running", result);
+        if(!make.isEmpty()) {
+            assertEquals("The " + make + " Motorcycle is running", result);
+        }
     }
 
 

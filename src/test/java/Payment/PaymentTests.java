@@ -1,18 +1,19 @@
 package Payment;
 
 
-import com.learn.task2.ex_1.Ex1;
+import com.learn.task2.ex_1.PaymentService;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThrows;
 
 public class PaymentTests {
-    private Ex1 payment;
+    private PaymentService payment;
 
     @Before
     public void setUp(){
-        payment = new Ex1();
+        payment = new PaymentService();
     }
 
     @Test
@@ -27,5 +28,10 @@ public class PaymentTests {
         assertEquals("PayPal payment processed successfully", result);
     }
 
+    @Test
+        public void testChangePaymentMethodWrongPayment() {
+        assertThrows(IllegalStateException.class, () ->
+            payment.processPayment("Revolut"));
+    }
 
 }

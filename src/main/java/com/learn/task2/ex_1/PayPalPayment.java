@@ -1,6 +1,6 @@
 package com.learn.task2.ex_1;
 
-public class PayPalPayment extends Payment{
+public class PayPalPayment extends Payment {
 
     @Override
     public String runPayment() {
