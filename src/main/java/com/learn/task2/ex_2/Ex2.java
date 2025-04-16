@@ -11,12 +11,13 @@ public class Ex2 {
     String filePath = "src/main/java/com/learn/task2/ex_2/makes.txt";
     String make;
     VehicleFactory factory;
+    Random random = new Random();
 
     public String setUp() {
          try(Stream<String> lines = Files.lines(Path.of(filePath))) {
              List<String> makesList = lines.toList();
              if(!makesList.isEmpty()){
-            this.make = makesList.get(new Random().nextInt(0, makesList.size()));
+            this.make = makesList.get(random.nextInt(0, makesList.size()));
             this.factory = new VehicleFactory(make);
             return "the file was read successfully";
              }else{

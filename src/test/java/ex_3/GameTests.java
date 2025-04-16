@@ -9,8 +9,8 @@ import static org.junit.Assert.*;
 
 
 public class GameTests {
-    Game football;
-    Game chess;
+    private Game football;
+    private Game chess;
     @Before
     public void setUp() {
         football = new Football();
