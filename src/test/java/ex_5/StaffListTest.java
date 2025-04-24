@@ -40,7 +40,7 @@ public class StaffListTest {
         Workers worker = new Workers(new Director(),"director");
         assertThrows(IndexOutOfBoundsException.class, () ->staff.add(worker));
     }
-    
+
 
 
     @Test
